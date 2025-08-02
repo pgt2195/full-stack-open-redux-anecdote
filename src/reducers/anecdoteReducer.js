@@ -6,6 +6,9 @@ const anecdoteSlice = createSlice({
   name: "anecdotes",
   initialState: [],
   reducers: {
+    setAnecdotes(_state, action) {
+      return action.payload
+    },
     addAnecdote(state, action) {
       return state.concat(action.payload)
     },
@@ -15,9 +18,6 @@ const anecdoteSlice = createSlice({
           return {...anecdote, votes: action.payload.votes}
         } return anecdote
       })
-    },
-    setAnecdotes(_state, action) {
-      return action.payload
     }
   }
 })

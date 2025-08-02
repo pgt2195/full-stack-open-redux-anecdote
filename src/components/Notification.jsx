@@ -1,6 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { clearNotification } from '../reducers/notificationReducer'
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const style = {
     border: 'solid',
@@ -9,24 +7,14 @@ const style = {
   }
 
 const Notification = () => {
-  const dispatch = useDispatch()
-
-  const notification = useSelector(state =>state.notification.content)
-
-  useEffect(() => {
-    if (!notification) return
-    const timeout = setTimeout(() => {
-      dispatch(clearNotification())
-    }, 5000)
-    return () => clearTimeout(timeout)}, [notification]) // clearTimeout permet d'éviter des conflit de timeout entre les notification qui se chevauchent
-  
+  const notification = useSelector(state => state.notification)
   return (
     <>
       {notification !== ''
-      ? <div style={style}>
-          {notification}
-        </div>
-      : <></>}
+       && <div style={style}>
+            {notification}
+          </div>
+      }
     </>
   )
 }

@@ -18,9 +18,9 @@ const DisplayAnecdotes = () => {
 
   const vote = (anecdote) => {
     dispatch(voteFor(anecdote.id))
-    dispatch(showNotification(`Your vote has been registered for: ${anecdote.content}`))
+    dispatch(showNotification(`Your vote has been registered for: ${anecdote.content}`, 5))
   }
-  
+
 
   return (
     <div>
