@@ -7,12 +7,10 @@ const AnecdoteForm = () => {
 
   const addAnecdote = async (event) => {
     event.preventDefault() // prevent the refresh of the page
-
     const userAnecdote = event.target.anecdote.value
     dispatch(createAnecdote(userAnecdote))
     dispatch(showNotification(`Your anecdote has been added: ${userAnecdote}`))
-    // Clearing the form
-    event.target.anecdote.value = ''
+    event.target.anecdote.value = '' // Clearing the form
   }
 
   return (
