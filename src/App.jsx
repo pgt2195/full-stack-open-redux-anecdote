@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import anecdoteService from './services/anecdotes'
-import { setAnecdotes } from './reducers/anecdoteReducer'
+import { initializeAnecdotes } from './reducers/anecdoteReducer'
 
 import AnecdoteForm from './components/AnecdoteForm'
 import DisplayAnecdotes from './components/DisplayAnecdotes'
@@ -15,8 +14,7 @@ const App = () => {
 
   // Assigne les anecdotes du backend au state correspondant
   useEffect(() => {
-    anecdoteService
-      .getAll().then(anecdotes => dispatch(setAnecdotes(anecdotes)))
+    dispatch(initializeAnecdotes())
   }, [])
 
   return (
